@@ -54,6 +54,23 @@ if(dd<10) dd='0'+dd;
 if(mm<10) mm='0'+mm;
 $("#date").html(mm+sp+dd+sp+yyyy);
 
+
+  // Load saved notes (if any)
+  try {
+    var loadNotes = localStorage.getItem("notes");
+  }
+  catch(err) {
+    var loadNotes = "Enter your notes here and click 'Save'";
+  }
+
+  $("#note-area").val(loadNotes);
+
+  // Save notes on button click
+  $("#saveNoteBtn").click(function(){
+    var currentNotes = $("#note-area").val();
+    localStorage.setItem("notes", currentNotes);    
+  });
+
 </script>
 </html>
 
